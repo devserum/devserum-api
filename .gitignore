@@ -1,3 +1,6 @@
 # IDE exception
 ## Jetbrains
 .idea/
+
+# common exception
+node_modules/
