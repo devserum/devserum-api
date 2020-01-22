@@ -4,3 +4,4 @@
 
 # common exception
 node_modules/
+yarn-error.log
