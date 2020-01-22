@@ -8,7 +8,8 @@
     "start:watch": "nodemon index.js",
     "lint": "esw *.js config src/**/* --color",
     "lint:watch": "yarn lint --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "yarn jest --config *.test.js",
+    "test:watch": "yarn jest --watch"
   },
   "repository": "git+https://github.com/devserum/devserum-api.git",
   "author": "JaeyoungLee(polyglot.m) <polyglot.m@gmail.com>",
@@ -20,7 +21,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
