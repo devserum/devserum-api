@@ -5,3 +5,6 @@
 # common exception
 node_modules/
 yarn-error.log
+.env
+.env.dev
+.env.prod
