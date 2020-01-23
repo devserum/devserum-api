@@ -1,5 +1,6 @@
-const env = require('dotenv').config();
+const result = require('dotenv').config();
+const env = result.parsed;
 
-env.port = env.port || 4000;
+env.PORT = process.env.PORT || env.PORT || 4000;
 
 module.exports = env;
