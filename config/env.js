@@ -1,20 +1,22 @@
 const result = require('dotenv').config();
+const defaultEnv = require('./default-env');
 
-const parsedEnv = result.parsed;
-const defaultSettings = {
-  PORT: 4000,
-};
+const dotEnv = result.parsed;
 
-const mergeEnvironmentVariables = (processEnv, parsedEnv, defaultSettings) => {
-  Object.keys(parsedEnv).forEach((key) => {
-    processEnv[key] = processEnv[key] || parsedEnv[key];
-  });
-  Object.keys(defaultSettings).forEach((key) => {
-    processEnv[key] = processEnv[key] || defaultSettings[key];
-  });
+const mergeEnvironmentVariables = (processEnv, dotEnv, defaultEnv) => {
+  if (dotEnv) {
+    Object.keys(dotEnv).forEach((key) => {
+      processEnv[key] = processEnv[key] || dotEnv[key];
+    });
+  }
+  if (defaultEnv) {
+    Object.keys(defaultEnv).forEach((key) => {
+      processEnv[key] = processEnv[key] || defaultEnv[key];
+    });
+  }
   return processEnv;
 };
 
-const env = mergeEnvironmentVariables(process.env, parsedEnv, defaultSettings);
+const env = mergeEnvironmentVariables(process.env, dotEnv, defaultEnv);
 
 module.exports = env;
