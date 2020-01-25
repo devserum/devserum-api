@@ -14,11 +14,11 @@
     "start": "node index.js",
     "start:watch": "nodemon index.js",
     "lint": "esw --color",
-    "lint:watch": "yarn lint --watch",
-    "test": "yarn jest",
-    "test:watch": "yarn jest --watch",
-    "hook:commit": "npm run test && npm run lint",
-    "hook:push": "npm run hook:commit"
+    "lint:watch": "lint --watch",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --coverage",
+    "hook:commit": "npm run lint && npm run test",
+    "hook:push": " npm run hook:commit"
   },
   "husky": {
     "hooks": {
