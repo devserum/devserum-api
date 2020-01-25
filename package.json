@@ -1,23 +1,31 @@
 {
   "name": "devserum-api",
+  "license": "MIT",
   "version": "0.1.0",
   "description": "Welcome!",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "start:watch": "nodemon index.js",
-    "lint": "esw *.js config src/**/* --color",
-    "lint:watch": "yarn lint --watch",
-    "test": "yarn jest --config *.test.js",
-    "test:watch": "yarn jest --watch"
-  },
   "repository": "git+https://github.com/devserum/devserum-api.git",
   "author": "JaeyoungLee(polyglot.m) <polyglot.m@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/devserum/devserum-api/issues"
   },
   "homepage": "https://github.com/devserum/devserum-api#readme",
+  "scripts": {
+    "start": "node index.js",
+    "start:watch": "nodemon index.js",
+    "lint": "esw --color",
+    "lint:watch": "yarn lint --watch",
+    "test": "yarn jest",
+    "test:watch": "yarn jest --watch",
+    "hook:commit": "npm run test && npm run lint",
+    "hook:push": "npm run hook:commit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run hook:commit",
+      "pre-push": "npm run hook:push"
+    }
+  },
   "dependencies": {
     "consola": "^2.11.3",
     "dotenv": "^8.2.0",
@@ -35,6 +43,7 @@
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jest": "^23.6.0",
     "eslint-watch": "^6.0.1",
+    "husky": "^4.2.1",
     "jest": "^25.1.0"
   }
 }
