@@ -7,11 +7,12 @@ const indexRouter = express.Router();
 rootRouter.get('/', (req, res) => res.send('OK'));
 rootRouter.get('/health-check', (req, res) => res.send('OK'));
 
-rootRouter.use((req, res, next) => {
-  req.$params = {};
-  req.$data = {};
-  next();
-});
+// Common hook for API
+// rootRouter.use((req, res, next) => {
+//   req.$params = {};
+//   req.$data = {};
+//   next();
+// });
 
 app.use(rootRouter);
 
