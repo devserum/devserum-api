@@ -8,3 +8,6 @@ yarn-error.log
 .env
 .env.dev
 .env.prod
+
+# jest related
+coverage/
