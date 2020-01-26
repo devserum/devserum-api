@@ -18,7 +18,8 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage",
     "hook:commit": "npm run lint && npm run test",
-    "hook:push": " npm run hook:commit"
+    "hook:push": "npm run hook:commit",
+    "db:init": "node scripts/database-init.js"
   },
   "husky": {
     "hooks": {
