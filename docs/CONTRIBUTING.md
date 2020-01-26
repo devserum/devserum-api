@@ -1,8 +1,6 @@
-* [back to README](../README.md)
-
-<br>
-
 # CONTRIBUTING.md 
+
+* [README](../README.md)
 
 <br>
 
