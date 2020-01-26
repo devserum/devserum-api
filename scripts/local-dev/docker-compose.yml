@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: "postgres:latest"
+    container_name: "devserum_postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - devserum_db_data:/var/lib/postgresql/data
+volumes:
+  devserum_db_data:
