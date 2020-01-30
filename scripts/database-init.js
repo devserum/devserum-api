@@ -1,7 +1,7 @@
 const consola = require('consola');
 const { Client } = require('pg');
 
-const env = require('../config/env');
+const env = require('../config/config');
 
 const client = new Client({
   host: env.PSQL_HOST,
