@@ -35,22 +35,17 @@ const sequelizeCliConfigGenerator = (env) => {
 const mergeEnvironmentVariables = (processEnv, dotEnv, _defaultEnv) => {
   const mergedEnv = { ...processEnv };
   const sequelizeCliConfig = sequelizeCliConfigGenerator(dotEnv);
-  if (sequelizeCliConfig) {
-    Object.keys(sequelizeCliConfig).forEach((key) => {
-      mergedEnv[key] = processEnv[key] || sequelizeCliConfig[key];
-    });
-  }
-  // console.log(mergedEnv.development.toString());
-  if (dotEnv) {
-    Object.keys(dotEnv).forEach((key) => {
-      mergedEnv[key] = processEnv[key] || dotEnv[key];
-    });
-  }
-  if (_defaultEnv) {
-    Object.keys(defaultEnv).forEach((key) => {
-      mergedEnv[key] = processEnv[key] || _defaultEnv[key];
-    });
-  }
+  
+  Object.keys(sequelizeCliConfig).forEach((key) => {
+    mergedEnv[key] = processEnv[key] || sequelizeCliConfig[key];
+  });
+  Object.keys(dotEnv).forEach((key) => {
+    mergedEnv[key] = processEnv[key] || dotEnv[key];
+  });
+  Object.keys(defaultEnv).forEach((key) => {
+    mergedEnv[key] = processEnv[key] || _defaultEnv[key];
+  });
+  
   return mergedEnv;
 };
 
