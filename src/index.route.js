@@ -17,7 +17,7 @@ rootRouter.use((req, res, next) => {
 
 app.use(rootRouter);
 
-indexRouter.use('/template', TemplateRouter);
+indexRouter.use('/templates', TemplateRouter);
 app.use(indexRouter);
 
 module.exports = app;

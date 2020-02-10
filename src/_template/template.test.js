@@ -21,9 +21,9 @@ describe('# index test', () => {
   });
   
   const getBaseURL = (URL) => `${URL}`;
-  const baseURL = getBaseURL('/template');
+  const baseURL = getBaseURL('/templates');
   describe('## _template API test', () => {
-    test('# POST /template', async () => {
+    test('# POST /templates', async () => {
       await request
         .post(baseURL)
         .then((res) => {
