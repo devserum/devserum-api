@@ -11,3 +11,6 @@ yarn-error.log
 
 # jest related
 coverage/
+
+# git
+*.orig
