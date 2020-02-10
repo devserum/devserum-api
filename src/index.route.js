@@ -1,5 +1,6 @@
 const express = require('express');
 const TemplateRouter = require('./_template/template.route');
+const UserRouter = require('./user/user.route');
 
 const app = express();
 const rootRouter = express.Router();
@@ -18,6 +19,7 @@ rootRouter.use((req, res, next) => {
 app.use(rootRouter);
 
 indexRouter.use('/templates', TemplateRouter);
+indexRouter.use('/users', UserRouter);
 app.use(indexRouter);
 
 module.exports = app;
