@@ -4,7 +4,7 @@ const db = require('../../database');
 describe('# index test', () => {
   // const getBaseURL = (URL) => `${URL}`;
   // const baseURL = getBaseURL('/users');
-  const getRandNumWithString = (prefix = 'test', max = 1000) => `${prefix}${Math.floor(Math.random() * max)}}`;
+  const getRandNumWithString = (prefix = 'test', max = 1000000) => `${prefix}${Math.floor(Math.random() * max)}}`;
   
   const mockUserBody = {
     email: `${getRandNumWithString()}@gmail.com`,
