@@ -1,8 +1,11 @@
 const express = require('express');
 const TemplateRouter = require('./_template/template.route');
 const UserRouter = require('./user/user.route');
+const devserumMiddleware = require('./common/devserum.middleware');
 
 const app = express();
+app.use(devserumMiddleware);
+
 const rootRouter = express.Router();
 const indexRouter = express.Router();
 
