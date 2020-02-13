@@ -3,6 +3,8 @@ const TemplateController = require('./template.controller');
 
 const router = express.Router();
 
-router.post('/', TemplateController.create);
+router.route('/')
+  .post(TemplateController.create)
+  .get(TemplateController.getList);
 
 module.exports = router;
