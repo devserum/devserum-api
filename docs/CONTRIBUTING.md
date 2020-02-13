@@ -102,3 +102,19 @@ details:
 'sum' method wasn't caculate last element
 also fixed test code
 ```
+
+<br>
+<br>
+
+# side-story
+
+### this project use PascalCase for table and use camelCase for column
+
+because we use ORM (sequelize).
+
+if I use snake_case for column that will gonna make huge confuse in model(DTO)
+so for readability, consistency I have to choose this.
+
+
+
+
