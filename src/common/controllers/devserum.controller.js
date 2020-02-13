@@ -44,6 +44,19 @@ class DevserumController extends ResponseController {
       db[targetModelName].findByPk(targetModelId),
     );
   }
+  
+  static async getList(req, res, next, args) {
+    const layers = DevserumController.parseUrlLayer(req, 1);
+    const targetModelName = DevserumController.capitalize(pluralize.singular(layers.pop()));
+    
+    return super.modelResponse(
+      req,
+      res,
+      next,
+      args,
+      db[targetModelName].findAndCountAll(),
+    );
+  }
 }
 
 module.exports = DevserumController;
