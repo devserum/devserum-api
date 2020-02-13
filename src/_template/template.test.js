@@ -30,6 +30,15 @@ describe('# index test', () => {
           expect(res.statusCode).toEqual(200);
         });
     });
+    
+    test('# GET /templates', async () => {
+      await request
+        .get(baseURL)
+        .then((res) => {
+          expect(res.statusCode).toEqual(200);
+          expect(res.body.metaInfos.count).toBeGreaterThanOrEqual(1);
+        });
+    });
   });
   
   describe('## Model Test', () => {
