@@ -5,6 +5,10 @@ class TemplateController extends DevserumController {
     return super.create(req, res, next);
   }
   
+  static get(req, res, next) {
+    return super.get(req, res, next);
+  }
+  
   static getList(req, res, next) {
     return super.getList(req, res, next);
   }
