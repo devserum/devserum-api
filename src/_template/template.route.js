@@ -7,4 +7,7 @@ router.route('/')
   .post(TemplateController.create)
   .get(TemplateController.getList);
 
+router.route('/:templateId')
+  .get(TemplateController.get);
+
 module.exports = router;
