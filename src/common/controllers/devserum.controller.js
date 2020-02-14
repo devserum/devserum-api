@@ -21,7 +21,7 @@ class DevserumController extends ResponseController {
     const layers = DevserumController.parseUrlLayer(req);
     const targetModelName = DevserumController.capitalize(pluralize.singular(layers.pop()));
     
-    return super.asyncResponse(
+    return super.modelResponse(
       req,
       res,
       next,
@@ -36,7 +36,7 @@ class DevserumController extends ResponseController {
     const targetModelId = layers.pop();
     const targetModelName = DevserumController.capitalize(pluralize.singular(layers.pop()));
     
-    return super.asyncResponse(
+    return super.modelResponse(
       req,
       res,
       next,
