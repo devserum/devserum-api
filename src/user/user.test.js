@@ -1,7 +1,7 @@
 const request = require('../test-helper/request.test-helper');
 const db = require('../../database');
 
-describe('# index test', () => {
+describe('# User test', () => {
   const getBaseURL = (URL) => `${URL}`;
   const baseURL = getBaseURL('/users');
   const getRandNumWithString = (prefix = 'test', max = 1000000) => `${prefix}${Math.floor(Math.random() * max)}`;
@@ -15,14 +15,15 @@ describe('# index test', () => {
     };
     
     let createdUser;
+    
     test('# POST /users', async () => {
       await request
         .post(baseURL)
         .send(mockUserBody)
         .then((res) => {
           expect(res.statusCode).toEqual(200);
-          expect(res.body.email).toEqual(mockUserBody.email);
-          createdUser = res.body;
+          [createdUser] = res.body.data;
+          expect(createdUser.email).toEqual(mockUserBody.email);
         });
     });
     
@@ -32,7 +33,7 @@ describe('# index test', () => {
         .get(url)
         .then((res) => {
           expect(res.statusCode).toEqual(200);
-          expect(res.body.email).toEqual(createdUser.email);
+          expect(res.body.data[0].email).toEqual(createdUser.email);
         });
     });
   });
