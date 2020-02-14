@@ -12,17 +12,17 @@ class ResponseController {
     };
   }
   
-  static async asyncResponse(req, res, next, args, asyncFunc) {
-    asyncFunc
-      .then((result) => {
-        res.send(result);
-      });
-  }
-  
   static async modelResponse(req, res, next, args, model) {
     model
       .then((result) => {
-        res.send(ResponseController.rappingToStandardFormat(result));
+        let resultFormat = result;
+        if (!result.rows) {
+          resultFormat = {
+            rows: [result],
+            count: 1,
+          };
+        }
+        res.send(ResponseController.rappingToStandardFormat(resultFormat));
       });
     // .catch((e) => res.send(e));
   }
