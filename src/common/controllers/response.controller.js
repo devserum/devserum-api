@@ -12,17 +12,29 @@ class ResponseController {
     };
   }
   
-  static async modelResponse(req, res, next, args, model) {
+  static wrappingModelFormat(action, result) {
+    let resultFormat = result;
+    if (action === 'update') {
+      const [count, rows] = result;
+      resultFormat = {
+        rows,
+        count,
+      };
+    }
+    if (action === 'create' || action === 'get') {
+      resultFormat = {
+        rows: [result],
+        // TODO: it' should be 0 or 1, based on result
+        count: 1,
+      };
+    }
+    return ResponseController.rappingToStandardFormat(resultFormat);
+  }
+  
+  static async modelResponse(req, res, next, args, model, action) {
     model
       .then((result) => {
-        let resultFormat = result;
-        if (!result.rows) {
-          resultFormat = {
-            rows: [result],
-            count: 1,
-          };
-        }
-        res.send(ResponseController.rappingToStandardFormat(resultFormat));
+        res.send(ResponseController.wrappingModelFormat(action, result));
       });
     // .catch((e) => res.send(e));
   }
