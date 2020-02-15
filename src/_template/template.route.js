@@ -8,6 +8,7 @@ router.route('/')
   .get(TemplateController.getList);
 
 router.route('/:templateId')
-  .get(TemplateController.get);
+  .get(TemplateController.get)
+  .put(TemplateController.update);
 
 module.exports = router;
