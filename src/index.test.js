@@ -1,4 +1,4 @@
-const request = require('./test-helper/request.test-helper');
+const request = require('./common/test-helper/request.test-helper');
 
 describe('# index test', () => {
   describe('## API test', () => {
