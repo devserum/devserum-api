@@ -1,17 +1,16 @@
-const request = require('../test-helper/request.test-helper');
+const DevSerumTestHelper = require('../common/test-helper/devserum.test-helper');
+const request = require('../common/test-helper/request.test-helper');
 const db = require('../../database');
 
 describe('# User test', () => {
   const getBaseURL = (URL) => `${URL}`;
   const baseURL = getBaseURL('/users');
-  const getRandNumWithString = (prefix = 'test', max = 1000000) => `${prefix}${Math.floor(Math.random() * max)}`;
-  
   
   describe('## users API test', () => {
     const mockUserBody = {
-      email: `${getRandNumWithString()}@gmail.com`,
+      email: `${DevSerumTestHelper.getRandomString()}@gmail.com`,
       password: '1234567890',
-      nickname: getRandNumWithString('test-nickname'),
+      nickname: DevSerumTestHelper.getRandomString('test-nickname'),
     };
     
     let createdUser;
@@ -40,9 +39,9 @@ describe('# User test', () => {
   
   describe('## Model Test', () => {
     const mockUserBody = {
-      email: `${getRandNumWithString()}@gmail.com`,
+      email: `${DevSerumTestHelper.getRandomString()}@gmail.com`,
       password: '1234567890',
-      nickname: getRandNumWithString('test-nickname'),
+      nickname: DevSerumTestHelper.getRandomString('test-nickname'),
     };
     const modelName = 'User';
     test('create', async () => {
