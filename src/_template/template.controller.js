@@ -12,6 +12,10 @@ class TemplateController extends DevserumController {
   static getList(req, res, next) {
     return super.getList(req, res, next);
   }
+  
+  static update(req, res, next) {
+    return super.update(req, res, next);
+  }
 }
 
 module.exports = TemplateController;
