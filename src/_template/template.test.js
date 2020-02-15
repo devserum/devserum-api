@@ -1,4 +1,5 @@
-const request = require('../test-helper/request.test-helper');
+const DevSerumTestHelper = require('../common/test-helper/devserum.test-helper');
+const request = require('../common/test-helper/request.test-helper');
 const db = require('../../database');
 
 describe('# Template test', () => {
@@ -45,6 +46,24 @@ describe('# Template test', () => {
         });
     });
     
+    test('# PUT /templates/:templateId', async () => {
+      const targetURL = getURLWithId(createdModel.id);
+      
+      const updateBody = {
+        id: createdModel.id,
+        textField: DevSerumTestHelper.getRandomString('updated-'),
+      };
+      
+      await request
+        .put(targetURL)
+        .send(updateBody)
+        .then((res) => {
+          expect(res.statusCode).toEqual(200);
+          expect(res.body.data[0].id).toEqual(updateBody.id);
+          expect(res.body.data[0].textField).toEqual(updateBody.textField);
+        });
+    });
+    
     test('# GET /templates', async () => {
       await request
         .get(baseURL)
@@ -57,9 +76,25 @@ describe('# Template test', () => {
   
   describe('## Model Test', () => {
     const modelName = 'Template';
+    let createdModel;
     test('create', async () => {
-      const result = await db[modelName].create({ textField: 'test' });
-      expect(result.textField).toEqual('test');
+      createdModel = await db[modelName].create({ textField: 'test' });
+      
+      expect(createdModel.textField).toEqual('test');
+    });
+    
+    test('update', async () => {
+      const uptedModel = await db[modelName].update(
+        {
+          textField: 'test-update',
+        },
+        {
+          where: { id: createdModel.id },
+          returning: true,
+        },
+      );
+      
+      expect(uptedModel[0]).toBeGreaterThanOrEqual(1);
     });
   });
 });
