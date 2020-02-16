@@ -64,6 +64,16 @@ describe('# Template test', () => {
         });
     });
     
+    test('# DELETE /templates/:templateId', async () => {
+      const targetURL = getURLWithId(createdModel.id);
+ 
+      await request
+        .delete(targetURL)
+        .then((res) => {
+          expect(res.statusCode).toEqual(200);
+        });
+    });
+    
     test('# GET /templates', async () => {
       await request
         .get(baseURL)
