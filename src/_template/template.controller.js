@@ -1,4 +1,5 @@
 const DevserumController = require('../common/controllers/devserum.controller');
+const DevserumInterface = require('../common/devserum.interface');
 
 class TemplateController extends DevserumController {
   static create(req, res, next) {
@@ -15,6 +16,10 @@ class TemplateController extends DevserumController {
   
   static update(req, res, next) {
     return super.update(req, res, next);
+  }
+  
+  static get [DevserumInterface.actions.delete]() {
+    return async (req, res, next) => super[DevserumInterface.actions.delete](req, res, next);
   }
 }
 
