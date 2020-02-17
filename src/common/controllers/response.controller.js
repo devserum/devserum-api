@@ -1,14 +1,26 @@
+const DevserumInterface = require('../devserum.interface');
+
 class ResponseController {
   static rappingToStandardFormat(data) {
+    let metaInfos = {
+      effectedRows: null,
+      pageSize: null,
+      count: null,
+    };
+    
+    if (data.metaInfos) {
+      metaInfos = {
+        effectedRows: data.metaInfos.effectedRows || null,
+        pageSize: data.pageSize || null,
+        count: data.metaInfos.count || 0,
+      };
+    }
+    
     return {
-      data: null || data.rows,
+      data: data.rows || null,
       nextLink: null,
       prevLink: null,
-      metaInfos: {
-        effectedRows: null,
-        pageSize: null,
-        count: 0 || data.count,
-      },
+      metaInfos,
     };
   }
   
@@ -21,13 +33,34 @@ class ResponseController {
         count,
       };
     }
+    
     if (action === 'create' || action === 'get') {
       resultFormat = {
         rows: [result],
         // TODO: it' should be 0 or 1, based on result
-        count: 1,
+        metaInfos: {
+          count: 1,
+        },
       };
     }
+    
+    if (action === 'getList') {
+      resultFormat = {
+        rows: result.rows,
+        metaInfos: {
+          count: result.count,
+        },
+      };
+    }
+    
+    if (action === DevserumInterface.actions.delete) {
+      resultFormat = {
+        metaInfos: {
+          effectedRows: result,
+        },
+      };
+    }
+    
     return ResponseController.rappingToStandardFormat(resultFormat);
   }
   
