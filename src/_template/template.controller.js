@@ -19,7 +19,9 @@ class TemplateController extends DevserumController {
   }
   
   static get [DevserumInterface.actions.delete]() {
-    return async (req, res, next) => super[DevserumInterface.actions.delete](req, res, next);
+    return async (
+      req, res, next,
+    ) => super[DevserumInterface.actions.deleteAndResponse](req, res, next);
   }
 }
 
