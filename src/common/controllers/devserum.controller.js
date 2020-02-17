@@ -85,26 +85,31 @@ class DevserumController extends ResponseController {
   }
   
   static get [DevserumInterface.actions.delete]() {
-    return async (req, res, next, args) => {
+    return async (req) => {
       const layers = DevserumController.parseUrlLayer(req, 2);
-      
       const targetModelId = layers.pop();
       const targetModelName = DevserumController.capitalize(pluralize.singular(layers.pop()));
       
-      return super.modelResponse(
-        req,
-        res,
-        next,
-        args,
-        db[targetModelName].destroy(
-          {
-            where: { id: targetModelId },
-            returning: true,
-          },
-        ),
-        [DevserumInterface.actions.delete],
+      return db[targetModelName].destroy(
+        {
+          where: { id: targetModelId },
+          returning: true,
+        },
       );
     };
+  }
+  
+  static get [DevserumInterface.actions.deleteAndResponse]() {
+    return async (
+      req, res, next, args,
+    ) => super.modelResponse(
+      req,
+      res,
+      next,
+      args,
+      DevserumController[DevserumInterface.actions.delete](req, res, next, args),
+      DevserumInterface.actions.delete,
+    );
   }
 }
 
