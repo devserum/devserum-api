@@ -1,7 +1,9 @@
 const DevserumInterface = {
   actions: {
-    deleteAndResponse: Symbol('deleteAndResponse'),
     delete: Symbol('delete'),
+    deleteAndResponse: Symbol('deleteAndResponse'),
+    update: Symbol('update'),
+    updateAndResponse: Symbol('updateAndResponse'),
   },
 };
 
