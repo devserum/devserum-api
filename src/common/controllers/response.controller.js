@@ -26,7 +26,7 @@ class ResponseController {
   
   static wrappingModelFormat(action, result) {
     let resultFormat = result;
-    if (action === 'update') {
+    if (action === DevserumInterface.actions.update) {
       const [count, rows] = result;
       resultFormat = {
         rows,
