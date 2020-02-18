@@ -14,8 +14,10 @@ class TemplateController extends DevserumController {
     return super.getList(req, res, next);
   }
   
-  static update(req, res, next) {
-    return super.update(req, res, next);
+  static get [DevserumInterface.actions.update]() {
+    return async (
+      req, res, next,
+    ) => super[DevserumInterface.actions.updateAndResponse](req, res, next);
   }
   
   static get [DevserumInterface.actions.delete]() {
