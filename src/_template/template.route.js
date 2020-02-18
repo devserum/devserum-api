@@ -10,7 +10,7 @@ router.route('/')
 
 router.route('/:templateId')
   .get(TemplateController.get)
-  .put(TemplateController.update)
+  .put(TemplateController[DevserumInterface.actions.update])
   .delete(TemplateController[DevserumInterface.actions.delete]);
 
 module.exports = router;
