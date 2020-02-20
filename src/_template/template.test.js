@@ -66,7 +66,7 @@ describe('# Template test', () => {
     
     test('# DELETE /templates/:templateId', async () => {
       const targetURL = getURLWithId(createdModel.id);
- 
+      
       await request
         .delete(targetURL)
         .then((res) => {
@@ -80,6 +80,15 @@ describe('# Template test', () => {
         .then((res) => {
           expect(res.statusCode).toEqual(200);
           expect(res.body.metaInfos.count).toBeGreaterThanOrEqual(1);
+        });
+    });
+    
+    test('# GET /templates/subUrl', async () => {
+      const targetURL = '/templates/subUrl';
+      await request
+        .get(targetURL)
+        .then((res) => {
+          expect(res.statusCode).toEqual(200);
         });
     });
   });
