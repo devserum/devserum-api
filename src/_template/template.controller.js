@@ -25,6 +25,10 @@ class TemplateController extends DevserumController {
       req, res, next,
     ) => super[DevserumInterface.actions.deleteAndResponse](req, res, next);
   }
+  
+  static subUrl(req, res) {
+    return res.send(200);
+  }
 }
 
 module.exports = TemplateController;
