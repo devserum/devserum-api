@@ -1,7 +1,7 @@
 const pluralize = require('pluralize');
 
 const ResponseController = require('./response.controller');
-const DevserumInterface = require('../devserum.interface');
+const ControllerInterface = require('../interfaces/devserum.controller.interface');
 
 const db = require('../../../database');
 
@@ -62,7 +62,7 @@ class DevserumController extends ResponseController {
     );
   }
   
-  static get [DevserumInterface.actions.update]() {
+  static get [ControllerInterface.actions.update]() {
     return async (req) => {
       const layers = DevserumController.parseUrlLayer(req, 2);
       
@@ -79,18 +79,18 @@ class DevserumController extends ResponseController {
     };
   }
   
-  static get [DevserumInterface.actions.updateAndResponse]() {
+  static get [ControllerInterface.actions.updateAndResponse]() {
     return async (req, res, next, args) => super.modelResponse(
       req,
       res,
       next,
       args,
-      DevserumController[DevserumInterface.actions.update](req, res, next, args),
-      DevserumInterface.actions.update,
+      DevserumController[ControllerInterface.actions.update](req, res, next, args),
+      ControllerInterface.actions.update,
     );
   }
   
-  static get [DevserumInterface.actions.delete]() {
+  static get [ControllerInterface.actions.delete]() {
     return async (req) => {
       const layers = DevserumController.parseUrlLayer(req, 2);
       const targetModelId = layers.pop();
@@ -105,7 +105,7 @@ class DevserumController extends ResponseController {
     };
   }
   
-  static get [DevserumInterface.actions.deleteAndResponse]() {
+  static get [ControllerInterface.actions.deleteAndResponse]() {
     return async (
       req, res, next, args,
     ) => super.modelResponse(
@@ -113,8 +113,8 @@ class DevserumController extends ResponseController {
       res,
       next,
       args,
-      DevserumController[DevserumInterface.actions.delete](req, res, next, args),
-      DevserumInterface.actions.delete,
+      DevserumController[ControllerInterface.actions.delete](req, res, next, args),
+      ControllerInterface.actions.delete,
     );
   }
 }

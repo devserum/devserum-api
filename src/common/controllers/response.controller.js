@@ -1,4 +1,4 @@
-const DevserumInterface = require('../devserum.interface');
+const DevserumInterface = require('../interfaces/devserum.controller.interface');
 
 class ResponseController {
   static rappingToStandardFormat(data) {

@@ -1,5 +1,5 @@
 const DevserumController = require('../common/controllers/devserum.controller');
-const DevserumInterface = require('../common/devserum.interface');
+const DevserumInterface = require('../common/interfaces/devserum.controller.interface');
 
 class TemplateController extends DevserumController {
   static create(req, res, next) {

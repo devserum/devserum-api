@@ -103,7 +103,7 @@ describe('# Template test', () => {
     });
     
     test('update', async () => {
-      const uptedModel = await db[modelName].update(
+      const updatedModel = await db[modelName].update(
         {
           textField: 'test-update',
         },
@@ -113,7 +113,7 @@ describe('# Template test', () => {
         },
       );
       
-      expect(uptedModel[0]).toBeGreaterThanOrEqual(1);
+      expect(updatedModel[0]).toBeGreaterThanOrEqual(1);
     });
   });
 });

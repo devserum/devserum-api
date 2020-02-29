@@ -1,6 +1,6 @@
 const express = require('express');
 const TemplateController = require('./template.controller');
-const DevserumInterface = require('../common/devserum.interface');
+const DevserumInterface = require('../common/interfaces/devserum.controller.interface');
 
 const router = express.Router();
 

@@ -1,4 +1,4 @@
-const DevserumInterface = {
+const DevserumControllerInterface = {
   actions: {
     delete: Symbol('delete'),
     deleteAndResponse: Symbol('deleteAndResponse'),
@@ -7,4 +7,4 @@ const DevserumInterface = {
   },
 };
 
-module.exports = DevserumInterface;
+module.exports = DevserumControllerInterface;
